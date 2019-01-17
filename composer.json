@@ -1,0 +1,30 @@
+{
+  "name": "AntoineLemaire/sqreen-api-php-client",
+  "description": "Sqreen library for PHP",
+  "version": "0.0.1",
+  "keywords": [
+    "sqreen",
+    "api"
+  ],
+  "homepage": "https://my.sqreen.io",
+  "authors": [
+    {
+      "name": "AntoineLemaire"
+    }
+  ],
+  "license": "Apache-2.0",
+  "minimum-stability": "dev",
+  "require": {
+    "netresearch/jsonmapper": "0.9.0",
+    "guzzlehttp/guzzle": "^6.3@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sqreen\\": ["src"]
+    }
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.15@dev",
+    "symfony/var-dumper": "^4.3@dev"
+  }
+}
