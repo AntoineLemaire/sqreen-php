@@ -42,6 +42,11 @@ class SqreenApplication
      */
     public function getSecurityResponse($limit = 20)
     {
-        return $this->client->get(self::BASE_ENDPOINT.$this->client->getApplicationId().'/security_responses/?_limit='.$limit);
+        return $this->client->get(
+            self::BASE_ENDPOINT.$this->client->getApplicationId().'/security_responses/',
+            [
+                '_limit' => $limit,
+            ]
+        );
     }
 }

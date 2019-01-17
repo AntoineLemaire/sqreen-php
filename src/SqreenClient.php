@@ -3,9 +3,10 @@
 namespace Sqreen;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use function GuzzleHttp\Psr7\stream_for;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Console\Application;
-use function GuzzleHttp\Psr7\stream_for;
 
 class SqreenClient
 {
@@ -22,7 +23,7 @@ class SqreenClient
     private $session;
 
     /**
-     * @var Client
+     * @var ClientInterface
      */
     private $httpClient;
 
@@ -39,17 +40,22 @@ class SqreenClient
     /**
      * SqreenClient constructor.
      *
-     * @param string $applicationId
-     * @param string $login
-     * @param string $password
+     * @param string               $applicationId
+     * @param string               $email
+     * @param string               $password
+     * @param ClientInterface|null $client
      */
-    public function __construct($applicationId, $login, $password)
+    public function __construct($applicationId, $email, $password, ClientInterface $client = null)
     {
         $this->applicationId = $applicationId;
 
-        $this->setDefaultClient();
+        if (null === $client) {
+            $this->setDefaultClient();
+        } else {
+            $this->httpClient = $client;
+        }
 
-        $this->session     = new SqreenSession($this, $login, $password);
+        $this->session     = new SqreenSession($this, $email, $password);
         $this->application = new SqreenApplication($this);
 
         $this->authenticate();
