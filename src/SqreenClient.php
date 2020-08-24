@@ -10,7 +10,7 @@ use Symfony\Component\Console\Application;
 
 class SqreenClient
 {
-    const BASE_URI = 'bff.sqreen.io/dashboard/v0/';
+    const BASE_URI = 'bff.sqreen.com/dashboard/v0/';
 
     /**
      * @var Application
